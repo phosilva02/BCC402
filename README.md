@@ -8,6 +8,8 @@ Atividade 02 -> 2.8.5 Stack'em Up
 
 Atividade 03 -> 3.8.5 Automated Judge Script
 
+Atividade 04 -> 4.6.5 Shoemaker's Problem
+
 ## Atividade 01 -> 1.6.5 Graphical Editor
 
 ### Pseudo Código
@@ -122,3 +124,28 @@ Fim
 ### Testes
 
 Execute ```python3 -m tests.testAutomatedJudge``` para rodar os testes.
+
+## Atividade 04 -> 4.6.5 - Shoemaker's Problem
+
+### Pseudo Código
+
+```plaintext
+Inicio
+    ler numCases
+    Para i de 0 até numCases-1
+        Ler n
+        Converter n para inteiro
+        orders <- lista vazia
+        Para j de 0 até n-1:
+            Ler order
+            Adicionar order à lista orders
+        Fim Para
+        Ordenar orders usando a fórmula de comparação: chave = order[0] (Data de vencimento) / order[1] (Valor de multa)
+        Imprimir orders ordenada
+    Fim Para
+Fim
+```
+
+### Testes
+
+Execute ```python3 -m tests.testShoemaker``` para rodar os testes.
