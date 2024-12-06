@@ -3,7 +3,10 @@
 Exercícios referentes a disciplica BCC402 - Algoritmos e Programação Avançada, Período 24/2
 
 Atividade 01 -> 1.6.5 Graphical Editor
+
 Atividade 02 -> 2.8.5 Stack'em Up
+
+Atividade 03 -> 3.8.5 Automated Judge Script
 
 ## Atividade 01 -> 1.6.5 Graphical Editor
 
@@ -50,7 +53,13 @@ Inicio
             insira numero digitado em ordemEmbaralhadas
         Fim Enquanto
         Para k em ordemEmbaralhadas
-            embaralhada <- elemento k-1 da lista tiposEmbaralhadas 
+            embaralhada <- elemento k-1 da lista tiposEmbaralhadas
+            baralhoProvisorio <- Lista Vazia
+            Para pos em embaralhada
+                carta <- obter elemento no indice pos em Baralho
+                insira carta em baralhoProvisorio
+            Fim Para
+            Baralho <- baralhoProvisorio
         Fim Para
         case <- case+1
     Fim Enquanto
@@ -59,4 +68,57 @@ Fim
 
 ### Testes
 
-Execute ```python3 -m tests.testStackemUp.py``` para rodar os testes.
+Execute ```python3 -m tests.testStackemUp``` para rodar os testes.
+
+## Atividade 03 -> 3.8.5 Automated Judge Script
+
+### Pseudo Código
+
+```plaintext
+Inicio
+    cont <- 1
+    Enquanto Verdadeiro
+        Ler n
+        Se n for menor ou igual a 0:
+            Sair do loop
+        Fim Se
+        standardSolution <- Lista Vazia
+        Para i de 0 até n-1:
+            Ler resposta
+            adicionar resposta à lista standardSolution
+        Fim Para
+        Ler m
+        teamOutput <- lista vazia
+        Para i de 0 até m-1:
+            Ler resposta
+            adicionar resposta à lista teamOutput
+        Fim Para
+        JudgeAnswers <- lista vazia
+        Para i de 0 até n-1:
+            correctAnswer <- Elemento i de standardSolution
+            teamAnswer <- Elemento i de teamOutput
+            Se correctAnswer for totalmente igual a teamAnswer:
+                adicionar "Accepted" à lista JudgeAnwsers
+            Senão se numeros de correctAnswer forem iguais ao numeros de teamAnswer:
+                adicionar "Presentation Error" à lista JudgeAnwsers
+            Senão:
+                adicionar "Wrong Answer" à lista JudgeAnwsers
+            Fim Se
+        Fim Para
+        remover duplicatas de JudgeAnwsers
+        Se "Wrong Answer" estiver em JudgeAnwsers:
+            finalAnwser <- "Run #cont: WrongAnswer"
+        Senão se "Presentation Error" estiver em JudgeAnwsers:
+            finalAnwser <- "Run #cont: Presentation Error"
+        Senão:
+            finalAnwser <- "Run #cont: Accepted"
+        Fim Se
+        imprimir finalAnwser
+        cont <- cont+1
+    Fim Enquanto
+Fim
+```
+
+### Testes
+
+Execute ```python3 -m tests.testAutomatedJudge``` para rodar os testes.
