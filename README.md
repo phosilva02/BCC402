@@ -149,3 +149,39 @@ Fim
 ### Testes
 
 Execute ```python3 -m tests.testShoemaker``` para rodar os testes.
+
+## Atividade 05 -> 5.9.5 - A Multiplication Game
+
+### Pseudo Código
+
+```plaintext
+Inicio
+    Ler n
+    Inicializar p como 1
+    Inicializar turn como 0
+    Inicializar mult como 2
+    Inicializar values como lista [9, 8, 7, 6, 5, 4, 3, 2]
+    Enquanto (p * 9) < n:
+        Para cada div em values:
+            Se n / (p * div) <= 9:
+                Se div for igual a 2:
+                    Definir mult como 2
+                Fim Se
+                Continuar para o próximo div
+            Fim Se
+            Definir mult como div
+            Sair do loop
+        Fim Para
+        Multiplicar p por mult
+        Incrementar turn em 1
+    Fim Enquanto
+    Se turn for ímpar:
+        Imprimir "Ollie wins."
+    Senão:
+        Imprimir "Stan wins."
+Fim
+```
+
+### Testes
+
+Execute ```python3 -m tests.testMultiplicationGame``` para rodar os testes.
