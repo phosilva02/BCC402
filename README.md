@@ -10,6 +10,12 @@ Atividade 03 -> 3.8.5 Automated Judge Script
 
 Atividade 04 -> 4.6.5 Shoemaker's Problem
 
+Atividade 05 -> 5.9.5 - A Multiplication Game
+
+Atividade 06 -> 6.6.5 - Complete Tree Labeling
+
+Atividade 07 -> 7.6.5 - Summation of Four Primes
+
 ## Atividade 01 -> 1.6.5 Graphical Editor
 
 ### Pseudo Código
@@ -185,3 +191,50 @@ Fim
 ### Testes
 
 Execute ```python3 -m tests.testMultiplicationGame``` para rodar os testes.
+
+## Atividade 06 -> 6.6.5 - Complete Tree Labeling
+
+EM DESENVOLVIMENTO
+
+## Atividade 07 -> 7.6.5 - Summation of Four Primes
+
+### Resumo de Abordagem Utilizada
+
+Baseado na Conjectura de Goldbach, que afirma que todo número par maior que 2 pode ser representado como a soma de dois números primos. A ideia é dividir a entrada na metade, gerando 2 fatores e, para cada numero gerado, fazer o mesmo recursivamente. Se os 2 fatores gerados forem primos, retorna eles. Caso contrário, tira uma unidade de um dos fatores para colocar no outro e repete o processo enquanto ambos os fatores forem maiores ou iguais a 2 (já que 2 é o menor primo). Caso contrário, informa que é impossivel representar esse numero na forma pedida.
+
+### Pseudo Código
+
+```plaintext
+Inicio
+    Ler entrada do usuário como n
+    Se n for menor ou igual a 7:
+        Imprimir "Impossible"
+        Finalizar processamento
+    listaPrimos <-- lista de primos de 2 até n
+    result <-- get2Factors(n, listaPrimos, 0)
+    Se result for Falso:
+        Imprimir "Impossible"
+    Senão:
+        Imprimir result
+Fim
+
+get2Factors(n, listaPrimos, depth):
+    Se depth for igual a 2:
+        Se n estiver em listaPrimos, retornar n, senão retornar Falso
+    a <-- n / 2
+    b <-- n - a
+    Enquanto b >= 2:
+        resultA <-- get2Factors(a, listaPrimos, depth + 1)
+        resultB <-- get2Factors(b, listaPrimos, depth + 1)
+        Se resultA e resultB não forem Falso:
+            Retornar [resultA, resultB]
+        a <-- a + 1
+        b <-- b - 1
+    Fim Enquanto
+    Retornar Falso
+Fim get2Factors
+```
+
+### Testes
+
+Execute ```python3 -m tests.testFourPrimes``` para rodar os testes.
