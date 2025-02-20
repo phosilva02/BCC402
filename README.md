@@ -238,3 +238,72 @@ Fim get2Factors
 ### Testes
 
 Execute ```python3 -m tests.testFourPrimes``` para rodar os testes.
+
+## Atividade 08 -> 8.6.5 - Tug of War
+
+### Resumo de Abordagem Utilizada
+
+Utilizando abordagem de backtracking para a escolha de melhor solução. Quando a solução não é viável, a solução é podada do processamento. O algoritmo de backtracking é baseado no algoritmo aparecido nos slides da disciplina.
+
+Uma solução é viavel se a diferença entre os 2 times ser menor ou igual a 1. Ou seja, a quantidade de pessoas em um time não pode passar da metade do número de pessoas totais
+
+Uma solução é melhor que outra se a diferença absoluta dos pesos entre os times for menor que a diferença absoluta dos pesos dos times formados na solução comparada.
+
+### Pseudo Código
+
+```plaintext
+Inicio
+    Ler a quantidade de casos
+    Para cada caso
+        Ler a quantidade de integrantes
+        Para cada integrante
+            Ler o peso desse integrante e armazenar no vetor de pesos
+        Fim Para
+        diff <-- soma de todos os pesos
+        backTracking()
+        Somar os pesos do time 1 baseado na melhor solução dada pelo backtracking
+        Somar os pesos do time 2 baseado na melhor solução dada pelo backtracking
+        Imprimir pesos do time 1 e do time 2
+    Fim Para
+Fim
+
+backTracking(depth, solution):
+    Se depth é igual a quantidade de integrantes:
+        processarSolucao(solution)
+    Fim Se
+    Senão:
+        depth <-- depth + 1
+        candidates <-- [1,2]
+        Para cada candidato em candidates
+            solution[depth] <-- candidato
+            Se isViable(solution):
+                backTracking(depth, solution)
+            Fim Se
+        Fim Para
+    Fim Senão
+Fim backTracking
+
+isViable(solution):
+    half <-- divisão inteira do total de integrantes por 2
+    Se half >= Quantidade de integrantes do maior time até o momento:
+        Retorna Solução viável
+    Fim Se
+    Senão:
+        Retorna Solução inviável
+    Fim Senão
+Fim isViable
+
+processarSolucao(solucao):
+    Separar os times 1 e 2 de acordo com a solução dada
+    diffSolucao <-- diferença absoluta de peso entre os 2 times
+    Se diffSolucao <= diff
+        diff <-- diffSolucao
+        melhorSolucao <-- solucao
+    Fim Se
+Fim processarSolucao
+
+```
+
+### Testes
+
+Execute ```python3 -m tests.testTugOfWar``` para rodar os testes.
