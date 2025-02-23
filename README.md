@@ -16,6 +16,10 @@ Atividade 06 -> 6.6.5 - Complete Tree Labeling
 
 Atividade 07 -> 7.6.5 - Summation of Four Primes
 
+Atividade 08 -> 8.6.5 - Tug of War
+
+Atividade 09 -> 9.6.5 - Edit Step Ladders
+
 ## Atividade 01 -> 1.6.5 Graphical Editor
 
 ### Pseudo Código
@@ -307,3 +311,45 @@ Fim processarSolucao
 ### Testes
 
 Execute ```python3 -m tests.testTugOfWar``` para rodar os testes.
+
+## Atividade 09 -> 9.6.5 - Edit Step Ladders
+
+### Resumo de Abordagem Utilizada
+
+O código consiste na construção de um grafo, onde cada palavra é um vértice. Duas palavras são conectadas por uma aresta de peso -1 se a distância de Levenshtein entre elas for menor ou igual a 1. A distância de Levenshtein é definida como a distância de edição entre 2 strings, ou seja, quantas operações de edição (adição, alteração ou remoção de caracteres) são necessárias para transformar uma string A em B.
+
+Após o grafo ser construido, pega-se o caminho menos custoso atraves de um algoritmo de caminho mais curto e imprime o custo desse caminho.
+
+Foram utilizadas 2 bibliotecas externas para a construção da resolução do exercício:
+
+**igraph:** Biblioteca para construção de grafos e utilização de suas estruturas. [Link para a biblioteca](https://python.igraph.org/en/stable/)
+
+```pip install igraph```
+
+**Levenshtein:** Biblioteca para o calculo da distância de Levenshtein. [Link para a biblioteca](https://pypi.org/project/python-Levenshtein/)
+
+```pip install python-Levenshtein ```
+
+### Pseudo Código
+
+```plaintext
+Inicio
+    Inicializar grafo g como vazio
+    Para cada input do usuario:
+        word <-- input do usuario
+        Inserir word em g
+        Para cada vertice de g diferente de word:
+            distancia <-- Levenshtein(word, g)
+            Se distancia <= 1:
+                Inserir aresta entre word e g com peso -1
+            Fim Se
+        Fim Para
+    Fim Para
+    Calcular caminhos mais curtos para cada par de vértices
+    Imprimir o valor do caminho mais curto
+Fim
+```
+
+### Testes
+
+Execute ```python3 -m tests.testStepLadders``` para rodar os testes.
