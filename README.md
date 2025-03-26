@@ -353,3 +353,45 @@ Fim
 ### Testes
 
 Execute ```python3 -m tests.testStepLadders``` para rodar os testes.
+
+## Atividade 10 -> 10.5.5 - War
+
+### Resumo de Abordagem Utilizada
+
+O código consiste na construção de dois grafos, onde um deles representa as relações de amigos, enquanto o outro a relação de inimigos. Cada vértice é uma pessoa. Arestas conectando 2 vertices significam que as pessoas possuem a relação representada pelo grafo (amizade ou inimizade). Após cada ação realizada, ocorre um processamento, aplicando as propriedades das operações de amizade e inimizade.
+
+Foi utilizada a seguinte biblioteca para a construção da resolução do exercício:
+
+**igraph:** Biblioteca para construção de grafos e utilização de suas estruturas. [Link para a biblioteca](https://python.igraph.org/en/stable/)
+
+```pip install igraph```
+
+### Pseudo Código
+
+```plaintext
+Inicio
+    Ler input de pessoas como n
+    Inicializar grafo A com n vertices
+    Inicializar grafo E com n vertices
+    Para cada input do usuario:
+        comando, p1, p2 <-- input do usuario
+        Se comando for 0:
+            Sair do Loop
+        Fim Se
+        Senão Se comando for 1, 2, 3 ou 4:
+            result <- Faz respectivo comando e retorna resultado
+        Fim Senão Se
+        Senão
+            Comando Inválido
+        Fim Senão
+        Adiciona Arestas no grafo A, mantendo a propriedade de "amigo do meu amigo é meu amigo"
+        Adiciona Arestas no grafo E, mantendo a propriedade de "amigo do meu inimigo é meu inimigo"
+        Adiciona Arestas no grafo A, mantendo a propriedade de "Inimigo do meu inimigo é meu amigo"
+        imprimir result
+    Fim Para
+Fim
+```
+
+### Testes
+
+Execute ```python3 -m tests.testWar``` para rodar os testes.
